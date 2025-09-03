@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "SM04B-SRSS-TB")(type "KiCad")(uri "${KIPRJMOD}/components/SM04B-SRSS-TB/SM04B-SRSS-TB.kicad_sym")(options "")(descr ""))
+  (lib (name "WS2812-2020")(type "Legacy")(uri "${KIPRJMOD}/components/WS2812-2020/WS2812-2020.lib")(options "")(descr ""))
+)

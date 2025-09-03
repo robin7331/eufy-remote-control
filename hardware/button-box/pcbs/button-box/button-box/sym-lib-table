@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "SM04B-SRSS-TB")(type "KiCad")(uri "${KIPRJMOD}/components/SM04B-SRSS-TB/SM04B-SRSS-TB.kicad_sym")(options "")(descr ""))
+  (lib (name "RP2xxx_Stamp")(type "KiCad")(uri "${KIPRJMOD}/components/RP2040 Stamp/RP2xxx_Stamp.kicad_sym")(options "")(descr ""))
+  (lib (name "RPI_RMC20452T")(type "KiCad")(uri "${KIPRJMOD}/components/raspberry-wireless-module-2/RPI_RMC20452T.kicad_sym")(options "")(descr ""))
+)

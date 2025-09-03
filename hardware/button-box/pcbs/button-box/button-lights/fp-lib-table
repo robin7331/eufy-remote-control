@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "SM04B-SRSS-TB")(type "KiCad")(uri "${KIPRJMOD}/components/SM04B-SRSS-TB")(options "")(descr ""))
+  (lib (name "WS2812-2020")(type "KiCad")(uri "${KIPRJMOD}/components/WS2812-2020")(options "")(descr ""))
+)
