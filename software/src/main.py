@@ -13,7 +13,6 @@ from controls.illumination import Illumination
 from controls.tapper import Tapper
 from device import Device
 from connection_manager import ConnectionManager, ConnectionState, PingState
-
 import asyncio
 
 
@@ -28,7 +27,6 @@ machine.freq(96000000)
 
 # The UI Renderer class holds the frame buffer and the PIO state machine
 renderer = UIRenderer(brightness_modifier=1.0, led_pin=6, led_count=8)
-
 
 
 
@@ -48,7 +46,6 @@ def renderIllumination(entity):
             led_index, (entity.color[0], entity.color[1], entity.color[2]), entity.color[3])
 
 left_button_illumination = Illumination(led_indexes=[4,5,6,7], on_should_render=renderIllumination)    
-
 right_button_illumination = Illumination(led_indexes=[0,1,2,3], on_should_render=renderIllumination)    
 
 left_button_illumination.set_color((0, 0, 0), 0.0, animated=False)
@@ -62,16 +59,11 @@ device = Device(left_illumination=left_button_illumination, right_illumination=r
 
 def connection_cb(connection_manager, state):
     print('Connection state changed to: %s' % state)
-    # if state is ConnectionState.CONNECTING:
-    #     device.set_state(device.idle_state)
-
-    # elif state is ConnectionState.DISCONNECTED:
     if state is ConnectionState.ERROR:
         device.to_error()
 
 def on_ping(connection_manager, state):
     print('Ping state changed to: %s' % state)
-
     if state is PingState.PRINTING_12MM:
         device.to_printing(type='12mm')
 
@@ -91,8 +83,6 @@ def on_ping(connection_manager, state):
         device.to_idle()
 
 
-
-
 def left_button_tapped(source):
     global connection_manager
     if device.is_idle() or device.is_error():
@@ -109,7 +99,7 @@ def right_button_tapped(source):
         print('Not in idle state, ignoring button press')
 
 def stop(source):
-    global communicaticonnection_manageron_manager
+    global connection_manager
     connection_manager.send_mqtt_command('stop')
 
 def set_tapper_parameters(retracted_angle, extended_angle):
@@ -132,10 +122,9 @@ asyncio.run(connection_manager.connect())
 left_button_illumination.flash((0, 255, 0), 0.28)
 right_button_illumination.flash((0, 255, 0), 0.28)
 
-last_rendered_at = 0
+last_rendered_at = utime.ticks_ms()
 
-while True:
-       
+while True:       
     left_button.tick()
     left_button_illumination.tick()
 
